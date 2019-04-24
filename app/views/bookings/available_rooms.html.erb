@@ -1,0 +1,18 @@
+<%#byebug%>
+<%= form_for(@booking, as: :booking, url: hotel_bookings_path, html: {class: "reservation-vertical clearfix"}) do |f| %>
+<%#= form_for  as: :booking, url: hotel_bookings_path, html: {class: "reservation-vertical clearfix"} do |f| %>
+      <h2 class="lined-heading"><span>Reservation</span></h2>
+      <div id="message"></div>
+      <%= f.text_field :check_in %>
+      <%= f.text_field :check_out %>
+
+      <div class="form-group">
+        <%#= f.select :room_id, @hotel_rooms.all.collect { |p| [ "Room #{p.name}", p.id ] }, {prompt: "Select Room"}, {class: "form-control"} %>
+        <%= f.select(:room_id, @hotel_rooms.all.collect {|u| [u.name, u.id]}, :prompt => 'Select') %>     
+      </div>
+      <button type="submit" class="btn btn-primary btn-block">Book Now</button>
+      <br/>
+      <%= link_to search_rooms_hotel_bookings_path, remote: true do %>
+        < Go back and select new date range
+      <% end %>
+    <% end %>

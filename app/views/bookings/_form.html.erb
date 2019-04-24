@@ -1,0 +1,67 @@
+<%= form_with(model: booking, local: true) do |form| %>
+  <% if booking.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(booking.errors.count, "error") %> prohibited this booking from being saved:</h2>
+
+      <ul>
+      <% booking.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :check_in %>
+    <%#= form.date_select :check_in %>
+    <%= form.text_field :check_in , required: true, autofocus: true, :class => "form-control brd_color_gray brd_color_gray_h tc_dove_gray datepicker",id: "from-datepicker", placeholder: "Checkin Date" %>
+  </div>
+
+  <div class="field">
+    <%= form.label :check_out %>
+    <%#= form.date_select :check_out %>
+    <%= form.text_field :check_out ,required: true, autofocus: true, :class => "form-control brd_color_gray brd_color_gray_h tc_dove_gray datepicker",id: "from-date-datepicker", placeholder: "Checkout Date" %>
+  </div>
+
+  <div class="field">
+    <%= form.label :hotel_id %>
+    <%#= form.number_field :hotel_id %>
+    <%= form.text_field :hotel_id, :value => @hotel.id %>
+
+  </div>
+
+  <div class="field">
+    <%= form.label :room_id %>
+    <%#= form.number_field :room_id %>
+    <%= form.text_field :room_id, :value => @room.id %>
+  </div>
+
+  <div class="field">
+    <%= form.label :user_id %>
+    <%#= form.number_field :user_id %>
+    <%= form.text_field :user_id, :value => current_user.id %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
+
+<script>
+  $( document ).ready(function() { 
+    $(".datepicker").datepicker({
+      format: 'yyyy-mm-dd',
+      autoclose: true,
+      todayHighlight: true,
+      todayBtn: "linked"
+    });
+  }); 
+</script>
+<script>
+  $( document ).ready(function() { 
+    $("#from-datepicker").datepicker('setStartDate', 'Date.Today');
+  });
+  $( document ).ready(function() { 
+    $("#from-date-datepicker").datepicker('setStartDate', 'Date.Today');
+  }); 
+</script>

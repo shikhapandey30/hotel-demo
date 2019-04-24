@@ -1,0 +1,22 @@
+<section id="reservation-form" class="mt50 clearfix">
+  <div class="col-sm-12 col-md-4">
+    <%= form_tag available_rooms_hotel_bookings_path, method: :get, class:"reservation-vertical clearfix" do %>
+      <h2 class="lined-heading"><span>Reservation</span></h2>
+      <div id="message"></div>
+      <!-- Error message display -->
+      <div class="form-group">
+        <label for="checkin">Check-in</label>
+        <div class="popover-icon" data-container="body" data-toggle="popover" data-trigger="hover" data-placement="right" data-content="Check-In is from 11:00"> <i class="fa fa-info-circle fa-lg"> </i> </div>
+        <i class="fa fa-calendar infield"></i>
+        <input name="booking[check_in]" type="text" id="checkin" value="" class="form-control" placeholder="Check-in"/>
+      </div>
+      <div class="form-group">
+        <label for="checkout">Check-out</label>
+        <div class="popover-icon" data-container="body" data-toggle="popover" data-trigger="hover" data-placement="right" data-content="Check-out is from 12:00"> <i class="fa fa-info-circle fa-lg"> </i> </div>
+        <i class="fa fa-calendar infield"></i>
+        <input name="booking[check_out]" type="text" id="checkout" value="" class="form-control" placeholder="Check-out"/>
+      </div>
+      <button type="submit" class="btn btn-primary btn-block">Search Rooms</button>
+    <% end %>
+  </div>
+</section>

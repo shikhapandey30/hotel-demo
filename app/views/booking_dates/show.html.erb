@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Reserved date:</strong>
+  <%= @booking_date.reserved_date %>
+</p>
+
+<p>
+  <strong>Booking:</strong>
+  <%= @booking_date.booking_id %>
+</p>
+
+<%= link_to 'Edit', edit_booking_date_path(@booking_date) %> |
+<%= link_to 'Back', booking_dates_path %>

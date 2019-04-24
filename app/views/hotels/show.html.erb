@@ -1,0 +1,12 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @hotel.name %>
+</p>
+<%#= link_to 'Search Room', search_rooms_hotel_bookings_path, class: "btn-success decoration_btn" %>
+
+<a href="/hotels/<%= @hotel.id%>/bookings/search_rooms">Search Room</a>
+
+<%= link_to 'Edit', edit_hotel_path(@hotel) %> |
+<%= link_to 'Back', hotels_path %>
