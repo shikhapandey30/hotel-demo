@@ -13,6 +13,14 @@ Rails.application.routes.draw do
 	  end
  	end
 
+  resources :bookings, only: [:new, :create] do 
+    collection do
+      get :search_rooms
+      # route for checkig available_rooms
+      get :available_rooms
+    end
+  end
+
  	resources :hotels, only: [] do
     member do
       get 'bookings/new'
@@ -26,5 +34,8 @@ Rails.application.routes.draw do
       end
     end
   end
+
+
+
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

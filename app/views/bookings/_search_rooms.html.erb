@@ -1,6 +1,6 @@
-<section id="reservation-form" class="mt50 clearfix">
+<section class="shikha">
   <div class="col-sm-12 col-md-4">
-    <%= form_tag available_rooms_hotel_bookings_path, method: :get, class:"reservation-vertical clearfix" do %>
+    <%= form_tag available_rooms_hotel_bookings_path(@hotel), method: :get, class:"reservation-vertical clearfix", remote: true do %>
       <h2 class="lined-heading"><span>Reservation</span></h2>
       <div id="message"></div>
       <!-- Error message display -->

@@ -12,7 +12,7 @@ class Booking < ApplicationRecord
   # Custom valudation for check in date
   # Check in date cannot be in the past
    validate :check_in_cannot_be_in_the_past
-   validate :available_rooms
+   # validate :available_rooms
 
   # Custom valudation for check out date
   # Check out date should not be less than check in date
@@ -24,10 +24,6 @@ class Booking < ApplicationRecord
 
   # Checking the hotel room availability
    validate :room_availability_check
-
-
-
-
 
   # Method for allowing booking only up to 6 months
   def check_out_cannot_be_more_than_6_months
@@ -54,7 +50,7 @@ class Booking < ApplicationRecord
   
   # Method to save booking dates with in booking dates table
   def create_or_update_booking_dates
-  	byebug
+    byebug
     if check_in_changed? || check_out_changed?
       # Delete all booking dates if check in or check out changed
       booking_dates.delete_all

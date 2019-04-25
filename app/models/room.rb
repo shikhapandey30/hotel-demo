@@ -2,10 +2,12 @@ class Room < ApplicationRecord
 	belongs_to :hotel
 	has_many :bookings
 
-	scope :available?, -> (check_in, check_out=nil) { available_rooms(check_in, check_out).present? }
+	scope :available?, -> (check_in, check_out=nil) {
+   available_rooms(check_in, check_out).present? }
 
   # Scope for finding all the available rooms
   scope :available_rooms, -> (check_in, check_out=nil) {
+    byebug
     check_out = check_in if check_out.nil?
     # Fetching all the booked rooms in the particular date range 
     hotel_rooms = includes(:bookings=>:booking_dates).where("booking_dates.reserved_date": check_in..check_out)
@@ -13,8 +15,6 @@ class Room < ApplicationRecord
     where.not(id: hotel_rooms.map(&:id))
   }
 
-  # These attributes should always be present
-  # validates :name, :max_adults, :max_children, :hotel_category_id, presence: true
 
   # Checking if particular room is avaliable or not
   def available?(check_in, check_out=nil)
@@ -25,9 +25,6 @@ class Room < ApplicationRecord
     # example available("2016/10/2","2016/10/9")
     # searching bookings using check_in and check_out date range
     bookings.joins(:booking_dates).where("booking_dates.reserved_date": check_in..check_out).blank?
-  end
-  def available_rooms check_in, check_out=nil
-    rooms.available_rooms check_in, check_out
   end
 
 end

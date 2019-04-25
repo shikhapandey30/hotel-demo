@@ -1,5 +1,5 @@
-<%#byebug%>
-<%= form_for(@booking, as: :booking, url: hotel_bookings_path, html: {class: "reservation-vertical clearfix"}) do |f| %>
+<section id="reservation-form" class="mt50 clearfix">
+<%= form_for(@booking, as: :booking, url: hotel_bookings_path, html: {class: "reservation-vertical clearfix",  remote: true}) do |f| %>
 <%#= form_for  as: :booking, url: hotel_bookings_path, html: {class: "reservation-vertical clearfix"} do |f| %>
       <h2 class="lined-heading"><span>Reservation</span></h2>
       <div id="message"></div>
@@ -16,3 +16,4 @@
         < Go back and select new date range
       <% end %>
     <% end %>
+  </section>

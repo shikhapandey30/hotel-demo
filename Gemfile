@@ -63,3 +63,4 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'devise'
 gem 'bootstrap-datepicker-rails'
 gem 'active_model_serializers', '~> 0.10.0'
+gem 'jquery-rails'

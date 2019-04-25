@@ -28,7 +28,6 @@ class BookingsController < ApplicationController
   end
 
   def search_rooms
-    # byebug
   end
   def available_rooms
     @booking = current_user.bookings.new(booking_params)
