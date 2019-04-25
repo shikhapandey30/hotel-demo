@@ -1,3 +1,18 @@
 // Validations for search filters of rooms
-  alert("shikha");
+  
+<% @booking.valid? %>
+<% error_messages = @booking.errors.messages.slice(:check_in, :check_out) %>
+<% if !error_messages.blank? %>
+    errors = ""
+	$.each(<%= raw error_messages.to_json %>, function(k, v) {
+        $(v).each(function(){
+            errors+="<li><span class='red-validation'><span class='capitalize red-validation'>"+k.replace(/_/g,' ')+"</span> "+this+"</span></li>"
+        })
+    });  
+    $("#message").html(errors)
+<% elsif @hotel_rooms.blank? %>
+  $("#message").html("<span class='red-validation'>No Rooms are available in this date range.</span>")
+<% else %>
+  $("#message").empty()
   $(".shikha").replaceWith("<%= j( render 'available_rooms' )%>")
+<% end %>

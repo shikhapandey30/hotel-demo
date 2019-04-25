@@ -3,8 +3,8 @@
 <%#= form_for  as: :booking, url: hotel_bookings_path, html: {class: "reservation-vertical clearfix"} do |f| %>
       <h2 class="lined-heading"><span>Reservation</span></h2>
       <div id="message"></div>
-      <%= f.text_field :check_in %>
-      <%= f.text_field :check_out %>
+      <%= f.hidden_field :check_in , class: "hidden" %>
+      <%= f.hidden_field :check_out , class: "hidden" %>
 
       <div class="form-group">
         <%#= f.select :room_id, @hotel_rooms.all.collect { |p| [ "Room #{p.name}", p.id ] }, {prompt: "Select Room"}, {class: "form-control"} %>
