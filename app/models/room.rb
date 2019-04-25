@@ -7,7 +7,6 @@ class Room < ApplicationRecord
 
   # Scope for finding all the available rooms
   scope :available_rooms, -> (check_in, check_out=nil) {
-    byebug
     check_out = check_in if check_out.nil?
     # Fetching all the booked rooms in the particular date range 
     hotel_rooms = includes(:bookings=>:booking_dates).where("booking_dates.reserved_date": check_in..check_out)

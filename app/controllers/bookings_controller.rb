@@ -42,9 +42,9 @@ class BookingsController < ApplicationController
   # POST /bookings.json
   def create
     @booking = current_user.bookings.new(booking_params)
-    # @booking.hotel_id = params[:hotel_id].to_i
+    @booking.hotel_id = params[:hotel_id].to_i
     # respond_to do |format|
-       @booking.save!
+       # @booking.save!
         # format.html { redirect_to @booking, notice: 'Booking was successfully created.' }
       #   # format.json { render :show, status: :created, location: @booking }
       # else

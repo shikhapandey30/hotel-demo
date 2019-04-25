@@ -25,6 +25,7 @@ class Booking < ApplicationRecord
   # Checking the hotel room availability
    validate :room_availability_check
 
+  private
   # Method for allowing booking only up to 6 months
   def check_out_cannot_be_more_than_6_months
     if check_out.present? && check_out > Date.today+6.months
@@ -50,8 +51,7 @@ class Booking < ApplicationRecord
   
   # Method to save booking dates with in booking dates table
   def create_or_update_booking_dates
-    byebug
-    if check_in_changed? || check_out_changed?
+    if check_in_previously_changed? || check_out_previously_changed?
       # Delete all booking dates if check in or check out changed
       booking_dates.delete_all
       # Adding all the dates of the check_in and check_out range into the reserved dates

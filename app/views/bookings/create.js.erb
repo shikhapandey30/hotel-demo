@@ -1,0 +1,13 @@
+// Validations for search filters of rooms
+<% if @booking.save %>
+  $("#message").empty()
+  $("#reservation-form").replaceWith("<%= j( render 'successfully_booked' )%>")
+<% else %>
+	errors = ""
+	$.each(<%= raw @booking.errors.to_json %>, function(k, v) {
+        $(v).each(function(){
+            errors+="<li><span class='red-validation'><span class='capitalize red-validation'>"+k.replace(/_/g,' ')+"</span> "+this+"</span></li>"
+        })
+    });  
+    $("#message").html(errors)
+<% end %>
